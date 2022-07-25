@@ -1,0 +1,12 @@
+<div class="home-body">
+  <%= simple_form_for(@content) do |f| %>
+    <%= f.input :title, label: "Titre" %>
+    <%= f.input :text, label: "Texte" %>
+    <%= f.input :section %>
+    <%= f.input :photo, label: 'Image/Photo' %>
+    <%= f.input :imgplace, label: 'Position de la photo', collection: Content::IMGPLACES, selected: 'Droite' %>
+    <%= f.submit class: "form-button" %>
+  <% end %>
+</div>
+
+<% console %>

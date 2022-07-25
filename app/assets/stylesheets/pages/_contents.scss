@@ -1,0 +1,15 @@
+// Specific CSS for contents index
+.home-body {
+  margin: 32px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.form-button {
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  background-color: $devise-form-button-color;
+  color: white;
+}
