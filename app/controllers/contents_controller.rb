@@ -28,7 +28,7 @@ class ContentsController < ApplicationController
 
       respond_to do |format|
         if @content.save
-          format.html { redirect_to content_url(contents_path), notice: "Contenu ajouté correctement" }
+          format.html { redirect_to contents_path, notice: "Contenu ajouté correctement" }
           format.json { render :show, status: :created, location: @content }
         else
           format.html { render :new, status: :unprocessable_entity }
