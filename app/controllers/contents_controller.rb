@@ -3,7 +3,11 @@ class ContentsController < ApplicationController
 
   # GET /contents or /contents.json
   def index
-    @contents = Content.all
+    if params[:section].present?
+      @contents = Content.where(section: params[:section])
+    else
+      @contents = Content.all
+    end
   end
 
   # GET /contents/1 or /contents/1.json
@@ -25,7 +29,6 @@ class ContentsController < ApplicationController
 
     if current_user.admin?
       @content.user_id = current_user.id
-
       respond_to do |format|
         if @content.save
           format.html { redirect_to contents_path, notice: "Contenu ajouté correctement" }
@@ -35,8 +38,14 @@ class ContentsController < ApplicationController
           format.json { render json: @content.errors, status: :unprocessable_entity }
         end
       end
+    else
+      console
+      flash.now[:alert] = "Vous devez être administrateur pour ajouter du contenu"
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @content.errors, status: :unprocessable_entity }
+      end
     end
-
   end
 
   # PATCH/PUT /contents/1 or /contents/1.json

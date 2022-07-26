@@ -1,3 +1,33 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "contents";
+
+.card-index {
+  margin: 32px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 15px;
+  > h1 {
+    text-align: center;
+  }
+}
+
+
+.card-text-content {
+  overflow: auto;
+}
+
+.img-content {
+  border-radius: 50%;
+  max-width: 25%;
+  height: auto;
+  margin: 16px;
+
+  &.img-gauche {
+    float: left;
+  }
+
+  &.img-droite {
+    float: right;
+  }
+}

@@ -7,10 +7,11 @@
           <%= link_to "Accueil", root_path, class: "nav-link" %>
         </li>
 
-        <li class="nav-item">
-          <%= link_to "Index", contents_path, class: "nav-link" %>
-        </li>
-
+        <% Content.distinct.pluck(:section).each do |section| %>
+          <li class="nav-item">
+            <%= link_to section, contents_path(section: section), class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
 

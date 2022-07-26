@@ -1,4 +1,18 @@
-<div class="home-body">
-  <h1>Contents#index</h1>
-  <p>Find me in app/views/contents/index.html.erb</p>
-</div>
+<% @contents.each do |content| %>
+  <div class="card-index">
+
+    <h1><%= content.title %></h1>
+
+    <div class="card-text-content">
+
+      <% if content.imgplace == "Gauche" %>
+           <%= cl_image_tag(content.photo.key, height: 300, width: 300, :crop=>"fill", class: "img-content img-gauche" ) %>
+      <% else %>
+          <%= cl_image_tag(content.photo.key, height: 300, width: 300, :crop=>"fill", class: "img-content img-droite" ) %>
+      <% end %>
+
+      <p><%= simple_format content.text %></p>
+
+    </div>
+  </div>
+<% end %>
